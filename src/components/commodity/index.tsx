@@ -1,10 +1,13 @@
 import { ComponentClass } from 'react'
 import Taro, { Component, Config } from '@tarojs/taro'
-import { View, Text } from '@tarojs/components'
+import { View } from '@tarojs/components'
 
 import './index.scss'
+import { AtInputNumber } from 'taro-ui'
 
-type CommodityState = {}
+type CommodityState = {
+  itemAmount: number
+}
 
 type CommodityOwnProps = {}
 
@@ -17,10 +20,40 @@ interface Commodity {
 class Commodity extends Component {
   config: Config = {}
 
+  state: CommodityState = {
+    itemAmount: 0
+  }
+
+  componentWillReceiveProps(nextProp: ICommodityProps) {
+    console.log(this.props, nextProp)
+  }
+
+  handleInputNumberChange(value: number) {
+    this.setState({
+      itemAmount: value
+    })
+  }
+
   render() {
     return (
-      <View>
-        <div>Hello world</div>
+      <View className='at-row at-row__justify-between'>
+        <View className='at-col at-col-3'>Image</View>
+        <View className='at-col at-col-auto'>
+          <View className='at-row'>标题</View>
+          <View className='at-row'>描述</View>
+          <View className='at-row at-row__justify-between'>
+            <View className='at-col'>价格</View>
+            <View className='at-col'>
+              <AtInputNumber
+                type='number'
+                min={0}
+                step={1}
+                value={this.state.itemAmount}
+                onChange={this.handleInputNumberChange.bind(this)}
+              />
+            </View>
+          </View>
+        </View>
       </View>
     )
   }
