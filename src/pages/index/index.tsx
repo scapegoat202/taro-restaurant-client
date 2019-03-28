@@ -2,11 +2,9 @@ import { ComponentClass } from 'react'
 import Taro, { Component, Config } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
 import { AtTabs, AtTabsPane } from 'taro-ui'
-import { connect } from '@tarojs/redux'
-
-import { add, minus, asyncAdd } from '../../actions/counter'
 
 import './index.scss'
+import Commodity from '../../components/commodity'
 
 // #region 书写注意
 //
@@ -18,17 +16,9 @@ import './index.scss'
 //
 // #endregion
 
-type PageStateProps = {
-  counter: {
-    num: number
-  }
-}
+type PageStateProps = {}
 
-type PageDispatchProps = {
-  add: () => void
-  dec: () => void
-  asyncAdd: () => any
-}
+type PageDispatchProps = {}
 
 type PageOwnProps = {}
 
@@ -42,22 +32,6 @@ interface Index {
   props: IProps
 }
 
-@connect(
-  ({ counter }) => ({
-    counter
-  }),
-  dispatch => ({
-    add() {
-      dispatch(add())
-    },
-    dec() {
-      dispatch(minus())
-    },
-    asyncAdd() {
-      dispatch(asyncAdd())
-    }
-  })
-)
 class Index extends Component {
   /**
    * 指定config的类型声明为: Taro.Config
@@ -80,7 +54,7 @@ class Index extends Component {
     })
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: IProps) {
     console.log(this.props, nextProps)
   }
 
@@ -106,38 +80,23 @@ class Index extends Component {
             current={this.state.current}
             tabList={tabList}
             height='570px'
-            tabDirection='vertical'
             onClick={this.handleTabsClick.bind(this)}
           >
             <AtTabsPane current={this.state.current} index={0}>
               <View className='tab-container'>
-                <Text>
-                  <div className='text-container'>
-                    如果必须离开你曾经住过、爱过、深埋着所有过往的地方
-                    <br />
-                    无论以何种方式，都不要慢慢离开，要决绝地离开，永远不回头。
-                    <br />
-                    不要相信过去的时光才更好，它们已经消亡了。过去的岁月看来
-                    <br />
-                    安全无害，被轻易跨越，而未来藏在迷雾中，叫人看来胆怯。
-                    <br /> 但当你踏足其中，就会云开雾散。
-                  </div>
-                </Text>
-                <Text>
-                  <article className='text-container'>
-                    可能等你过完自己的一生，到最后却发现了解别人胜过了解你自己。你学会观察他人，但你从不观察自己，因为你在与孤独苦苦抗争。假如你阅读，或玩纸牌，或照料一条狗，你就是在逃避自己。对孤独的厌恶就如同想要生存的本能一样理所当然，如果不是这样，人类就不会费神创造什么字母表，或是从动物的叫喊中总结出语言，也不会穿梭在各大洲之间——每个人都想知道别人是什么样子。
-                  </article>
-                </Text>
+                <Commodity />
+                <Commodity />
               </View>
             </AtTabsPane>
             <AtTabsPane current={this.state.current} index={1}>
               <View className='tab-container'>
-                <Text>标签页2内容</Text>
+                <Commodity />
+                <Commodity />
               </View>
             </AtTabsPane>
             <AtTabsPane current={this.state.current} index={2}>
               <View className='tab-container'>
-                <Text>标签页3内容</Text>
+                <Commodity />
               </View>
             </AtTabsPane>
           </AtTabs>
