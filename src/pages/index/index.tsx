@@ -72,7 +72,7 @@ class Index extends Component {
     ]
     return (
       <View className='index'>
-        <View className='at-row'>
+        <View className='at-row at-row__justify--center'>
           <Text>Head Top</Text>
         </View>
         <View className='at-row'>
@@ -83,19 +83,20 @@ class Index extends Component {
             onClick={this.handleTabsClick.bind(this)}
           >
             <AtTabsPane current={this.state.current} index={0}>
-              <View className='tab-container'>
+              <View>
+                <Commodity />
                 <Commodity />
                 <Commodity />
               </View>
             </AtTabsPane>
             <AtTabsPane current={this.state.current} index={1}>
-              <View className='tab-container'>
+              <View>
                 <Commodity />
                 <Commodity />
               </View>
             </AtTabsPane>
             <AtTabsPane current={this.state.current} index={2}>
-              <View className='tab-container'>
+              <View>
                 <Commodity />
               </View>
             </AtTabsPane>
