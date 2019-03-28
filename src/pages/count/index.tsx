@@ -1,12 +1,9 @@
 import { ComponentClass } from 'react'
 import Taro, { Component, Config } from '@tarojs/taro'
-import { View } from '@tarojs/components'
+import { View, Button, Text } from '@tarojs/components'
 import { connect } from '@tarojs/redux'
 
-import Count from '../count'
 import { add, minus, asyncAdd } from '../../actions/counter'
-
-import './index.scss'
 
 // #region 书写注意
 //
@@ -36,7 +33,7 @@ type PageState = {}
 
 type IProps = PageStateProps & PageDispatchProps & PageOwnProps
 
-interface Index {
+interface Count {
   props: IProps
 }
 
@@ -56,7 +53,7 @@ interface Index {
     }
   })
 )
-class Index extends Component {
+class Count extends Component {
   /**
    * 指定config的类型声明为: Taro.Config
    *
@@ -81,7 +78,21 @@ class Index extends Component {
   render() {
     return (
       <View className='index'>
-        <Count />
+        <Button className='add_btn' onClick={this.props.add}>
+          +
+        </Button>
+        <Button className='dec_btn' onClick={this.props.dec}>
+          -
+        </Button>
+        <Button className='dec_btn' onClick={this.props.asyncAdd}>
+          async
+        </Button>
+        <View>
+          <Text>{this.props.counter.num}</Text>
+        </View>
+        <View>
+          <Text>Hello, World</Text>
+        </View>
       </View>
     )
   }
@@ -94,4 +105,4 @@ class Index extends Component {
 //
 // #endregion
 
-export default Index as ComponentClass<PageOwnProps, PageState>
+export default Count as ComponentClass<PageOwnProps, PageState>
