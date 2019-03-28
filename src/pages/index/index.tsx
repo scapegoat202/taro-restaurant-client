@@ -1,10 +1,11 @@
 import { ComponentClass } from 'react'
 import Taro, { Component, Config } from '@tarojs/taro'
-import { View, Text } from '@tarojs/components'
+import { View } from '@tarojs/components'
 import { AtTabs, AtTabsPane } from 'taro-ui'
 
 import './index.scss'
 import Commodity from '../../components/commodity'
+import HeadTop from '../../components/head-top'
 
 // #region 书写注意
 //
@@ -73,7 +74,7 @@ class Index extends Component {
     return (
       <View className='index'>
         <View className='at-row at-row__justify--center'>
-          <Text>Head Top</Text>
+          <HeadTop />
         </View>
         <View className='at-row'>
           <AtTabs
