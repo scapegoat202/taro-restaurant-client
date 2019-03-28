@@ -80,7 +80,7 @@ class Index extends Component {
           <AtTabs
             current={this.state.current}
             tabList={tabList}
-            height='570px'
+            scroll
             onClick={this.handleTabsClick.bind(this)}
           >
             <AtTabsPane current={this.state.current} index={0}>
