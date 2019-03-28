@@ -36,7 +36,10 @@ class Commodity extends Component {
 
   render() {
     return (
-      <View className='at-row at-row__justify--between at-row__align--center commodity-container'>
+      <View
+        className='commodity-container at-row at-row__justify--between at-row__align--center'
+        style='width: auto;'
+      >
         <View className='at-col at-col-3'>Image</View>
         <View className='at-col at-col-auto'>
           <View className='at-row'>标题</View>
